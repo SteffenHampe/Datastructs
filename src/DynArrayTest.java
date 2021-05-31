@@ -6,6 +6,7 @@ class DynArrayTest {
     final Integer b = 4;
     final Integer c = 5;
     final Integer d = 8;
+    final Integer e = 12;
 
 
     @org.junit.jupiter.api.BeforeEach
@@ -18,7 +19,37 @@ class DynArrayTest {
     }
 
     @org.junit.jupiter.api.Test
+    void halbieren() {
+        emptyarray.addLast(a);
+        emptyarray.addLast(b);
+        emptyarray.addLast(c);
+        emptyarray.addLast(d);
+        assertEquals(4, emptyarray.size());
+        assertEquals(4, emptyarray.capacity());
+        emptyarray.addLast(e);
+        assertEquals(5, emptyarray.size());
+        assertEquals(8, emptyarray.capacity());
+        emptyarray.removeLast();
+        emptyarray.removeLast();
+        emptyarray.removeLast();
+        emptyarray.removeLast();
+        assertEquals(1, emptyarray.size());
+        assertEquals(2, emptyarray.capacity());
+    }
+
+    @org.junit.jupiter.api.Test
     void verdoppeln() {
+        assertEquals(0, emptyarray.size());
+        assertEquals(1, emptyarray.capacity());
+        emptyarray.addLast(a);
+        assertEquals(1, emptyarray.size());
+        assertEquals(1, emptyarray.capacity());
+        emptyarray.addLast(b);
+        assertEquals(2, emptyarray.size());
+        assertEquals(2, emptyarray.capacity());
+        emptyarray.addLast(c);
+        assertEquals(3, emptyarray.size());
+        assertEquals(4, emptyarray.capacity());
     }
 
     @org.junit.jupiter.api.Test
@@ -72,10 +103,32 @@ class DynArrayTest {
 
     @org.junit.jupiter.api.Test
     void addFirst() {
+        emptyarray.addFirst(a);
+        assertEquals(a, emptyarray.get(0));
+        emptyarray.addFirst(b);
+        assertEquals(2, emptyarray.capacity());
+        assertEquals(2, emptyarray.size());
+        assertEquals(b, emptyarray.get(0));
+        assertEquals(a, emptyarray.get(1));
+        emptyarray.addFirst(c);
+        assertEquals(c, emptyarray.get(0));
+        assertEquals(b, emptyarray.get(1));
+        assertEquals(a, emptyarray.get(2));
     }
 
     @org.junit.jupiter.api.Test
     void addLast() {
+        emptyarray.addLast(a);
+        assertEquals(a, emptyarray.get(0));
+        emptyarray.addLast(b);
+        assertEquals(2, emptyarray.capacity());
+        assertEquals(2, emptyarray.size());
+        assertEquals(a, emptyarray.get(0));
+        assertEquals(b, emptyarray.get(1));
+        emptyarray.addLast(c);
+        assertEquals(a, emptyarray.get(0));
+        assertEquals(b, emptyarray.get(1));
+        assertEquals(c, emptyarray.get(2));
     }
 
     @org.junit.jupiter.api.Test

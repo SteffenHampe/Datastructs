@@ -8,12 +8,23 @@ T[] array;
     array =  (T[])  new Object[1];
     }
 
-    public void verdoppeln(){
+    public void verdoppeln() {
         T[] tmp = (T[]) new Object[array.length];
         for (int i = 0; i < array.length; i++) {
             tmp[i] = array[i];
         }
         array = (T[]) new Object[tmp.length * 2];
+        for (int j = 0; j < tmp.length; j++) {
+            array[j] = tmp[j];
+        }
+    }
+
+    public void halbieren() {
+        T[] tmp = (T[]) new Object[size()];
+        for (int i = 0; i < tmp.length; i++) {
+            tmp[i] = array[i];
+        }
+        array = (T[]) new Object[array.length / 2];
         for (int j = 0; j < tmp.length; j++) {
             array[j] = tmp[j];
         }
@@ -36,7 +47,7 @@ T[] array;
     public T get(int pos) {
         if (pos > size() - 1) {
             throw new NoSuchElementException();
-        }else return array[pos];
+        } else return array[pos];
     }
 
     public T set(int pos, T e){
@@ -53,8 +64,8 @@ T[] array;
         if(size()==capacity()){
             verdoppeln();
         }
-        for(int i = size()-1;i>0;i--){
-            array[i+1] = array[i];
+        for (int i = size() - 1; i >= 0; i--) {
+            array[i + 1] = array[i];
         }
         array[0] = e;
     }
@@ -69,12 +80,18 @@ T[] array;
     public T removeFirst() {
         T tmp = array[0];
         array[0] = null;
+        if (size() * 4 == capacity()) {
+            halbieren();
+        }
         return tmp;
     }
 
     public T removeLast() {
         T tmp = array[size()];
-        array[size()] = null;
+        array[size() - 1] = null;
+        if (size() * 4 == capacity()) {
+            halbieren();
+        }
         return tmp;
     }
 
