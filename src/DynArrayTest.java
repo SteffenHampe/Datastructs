@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DynArrayTest {
@@ -90,6 +92,7 @@ class DynArrayTest {
         emptyarray.addLast(b);
         assertEquals(a, emptyarray.get(0));
         assertEquals(b, emptyarray.get(1));
+        assertThrows(NoSuchElementException.class, () -> emptyarray.get(10));
     }
 
     @org.junit.jupiter.api.Test
@@ -138,6 +141,10 @@ class DynArrayTest {
         emptyarray.addLast(b);
         emptyarray.addLast(c);
         emptyarray.addLast(d);
+        emptyarray.addLast(e);
+        emptyarray.removeLast();
+        emptyarray.removeLast();
+        emptyarray.removeLast();
         assertEquals(a, emptyarray.removeFirst());
     }
 
