@@ -99,6 +99,7 @@ class DynArrayTest {
         emptyarray.addLast(c);
         assertEquals(emptyarray.set(1, d), b);
         assertEquals(d, emptyarray.get(1));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> emptyarray.set(10, a));
     }
 
     @org.junit.jupiter.api.Test
