@@ -1,5 +1,6 @@
 import java.util.NoSuchElementException;
 
+@SuppressWarnings("unchecked")
 public class DynArray<T> {
 T[] array;
 
