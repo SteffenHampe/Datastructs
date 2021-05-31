@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "ManualArrayCopy"})
 public class DynArray<T> {
 T[] array;
 
@@ -32,8 +32,8 @@ T[] array;
 
     public int size() {
         int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null) {
+        for (T t : array) {
+            if (t != null) {
                 count++;
             }
         }
@@ -87,7 +87,7 @@ T[] array;
     }
 
     public T removeLast() {
-        T tmp = array[size()];
+        T tmp = array[size() - 1];
         array[size() - 1] = null;
         if (size() * 4 == capacity()) {
             halbieren();

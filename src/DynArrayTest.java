@@ -97,7 +97,7 @@ class DynArrayTest {
         emptyarray.addLast(a);
         emptyarray.addLast(b);
         emptyarray.addLast(c);
-        emptyarray.set(1, d);
+        assertEquals(emptyarray.set(1, d), b);
         assertEquals(d, emptyarray.get(1));
     }
 
@@ -133,9 +133,19 @@ class DynArrayTest {
 
     @org.junit.jupiter.api.Test
     void removeFirst() {
+        emptyarray.addLast(a);
+        emptyarray.addLast(b);
+        emptyarray.addLast(c);
+        emptyarray.addLast(d);
+        assertEquals(a, emptyarray.removeFirst());
     }
 
     @org.junit.jupiter.api.Test
     void removeLast() {
+        emptyarray.addLast(a);
+        emptyarray.addLast(b);
+        emptyarray.addLast(c);
+        emptyarray.addLast(d);
+        assertEquals(d, emptyarray.removeLast());
     }
 }
