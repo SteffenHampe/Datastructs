@@ -5,6 +5,7 @@ class DynArrayTest {
     final Integer a = 2;
     final Integer b = 4;
     final Integer c = 5;
+    final Integer d = 8;
 
 
     @org.junit.jupiter.api.BeforeEach
@@ -55,10 +56,18 @@ class DynArrayTest {
     void get() {
         emptyarray.addLast(a);
         assertEquals(a, emptyarray.get(0));
+        emptyarray.addLast(b);
+        assertEquals(a, emptyarray.get(0));
+        assertEquals(b, emptyarray.get(1));
     }
 
     @org.junit.jupiter.api.Test
     void set() {
+        emptyarray.addLast(a);
+        emptyarray.addLast(b);
+        emptyarray.addLast(c);
+        emptyarray.set(1, d);
+        assertEquals(d, emptyarray.get(1));
     }
 
     @org.junit.jupiter.api.Test
